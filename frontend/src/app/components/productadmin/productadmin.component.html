@@ -1,0 +1,139 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center mt-5">
+        <!-- Form -->
+        <div class="col-12 col-sm-6 col-md-3 card mx-1 px-0">
+
+                <div class="card-header bg-info text-white">
+                  <h6 class="mb-1">Crear productos</h6>
+                </div>
+                <div class="card-body">
+                  <!-- Form to register a user -->
+                  <form #productForm="ngForm" class="mb-4">
+                      <!-- Si el objeto que envío lleva el id se actualiza, sino tiene id, crea uno nuevo -->
+                    <input
+                        #name="ngModel"
+                        [(ngModel)]="productService.selectedProduct._id"
+                        type="hidden"
+                        class="form-control"
+                        id="_id"
+                        name="_id"
+                      />
+                    <div class="form-group">
+                      <label for="name"> <small class="text-muted"> Nombre </small></label>
+                      <input
+                        #name="ngModel"
+                        [(ngModel)]="productService.selectedProduct.name"
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="type"> <small class="text-muted"> Tipo de bici </small></label>
+                      <input
+                      #name="ngModel"
+                        [(ngModel)]="productService.selectedProduct.type"
+                        type="text"
+                        class="form-control"
+                        id="type"
+                        name="type"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="price"> <small class="text-muted"> Precio </small></label>
+                      <input
+                        #name="ngModel"
+                        [(ngModel)]="productService.selectedProduct.price"
+                        type="text"
+                        class="form-control"
+                        id="price"
+                        name="price"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="size"> <small class="text-muted"> Tamaño de rueda </small></label>
+                      <input
+                        #name="ngModel"
+                        [(ngModel)]="productService.selectedProduct.size"
+                        type="text"
+                        class="form-control"
+                        id="size"
+                        name="size"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="color"> <small class="text-muted"> Color </small></label>
+                      <input
+                        #name="ngModel"
+                        [(ngModel)]="productService.selectedProduct.color"
+                        type="text"
+                        class="form-control"
+                        id="color"
+                        name="color"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="file"> <small class="text-muted"> URL Imagen de la bici </small></label>
+                      <input
+                        #name="ngModel"
+                        [(ngModel)]="productService.selectedProduct.file"
+                        type="text"
+                        class="form-control"
+                        id="file"
+                        name="file"
+                      />
+                    </div>
+                    
+        
+                    <!-- <img *ngIf="userService.selectedUser.file" src="{{userService.selectedUser.file}}" width="200" alt=""> -->
+                    
+                  </form>
+                  <button type="submit" class="btn btn-info px-4 mr-2" (click)="save(productForm)">Guardar</button>
+                  <button class="btn btn-warning px-4" (click)="clean(productForm)">Limpiar</button>
+                </div>
+        </div>
+
+        <!-- Table -->
+        <div class="col-12 col-sm-6 col-md-8 card mx-1 px-0">
+            <div class="card-header bg-dark text-white">
+                <h6 class="mb-1">Listado de productos</h6>
+              </div>
+            <div class="card-body p-0">
+                <table class="table text-center">
+                  <thead class="bg-light text-info">
+                    <tr>
+                      <th scope="col"> <p class="my-0"><small> Nombre </small> </p></th>
+                      <th scope="col"> <p class="my-0"><small> Tipo </small> </p></th>
+                      <th scope="col"> <p class="my-0"><small> Precio </small> </p></th>
+                      <th scope="col"> <p class="my-0"><small> Tamaño </small> </p></th>
+                      <th scope="col"> <p class="my-0"><small> Color </small> </p></th>
+                      <th scope="col"> <p class="my-0"><small> Acciones </small> </p></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let model of productService.products">
+                      <td> {{ model.name }}</td>
+                      <td>{{ model.type }}</td>
+                      <td>{{ model.price }}</td>
+                      <td>{{ model.size }}</td>
+                      <td>{{ model.color }}</td>
+                      <td>
+                        <button class="btn btn-light text-info mr-1" (click)="fillFields(model)"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-light text-danger" (click)="deleteProduct(model._id)"><i class="bi bi-trash"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
