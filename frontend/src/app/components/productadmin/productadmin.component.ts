@@ -41,14 +41,26 @@ export class ProductadminComponent implements OnInit {
 
       // Actualizar el form
       this.productService.updateProduct(product.value).subscribe((res) => { // el .value es un objeto y puede traducirse a una clase
-        alert('Usuario actualizado')
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Producto Actualizado',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.getAllModels()
         this.clean(product) //El parametro del clean dice que form hay que limpiar
       })
     } else {
       product.value.file = this.productService.selectedProduct.file
       this.productService.createProduct(product.value).subscribe((res) => { //Debo suscribirme al método
-        alert('Usuario creado')
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Producto creado',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.getAllModels()
         this.clean(product)
       },
@@ -107,12 +119,40 @@ export class ProductadminComponent implements OnInit {
         })
       }
     })
-
-    
   }
 
+  //Limpiando campos del form
   fillFields(product:Product){
     this.productService.selectedProduct = product
+  }
+
+  // Carga de la imagen
+  loadImage(event:any){ //Evento de cualquier tipo
+    console.log(event)
+
+    // Se dfefine el límite de la imagen
+    let limit = 2 * 1024 * 1024;
+    console.log(`El límite de la img es ${limit}`)
+
+    // Si la imagen es menor que el límite se puede cargar, sino no no
+    if(event[0].size <= limit){
+      this.productService.selectedProduct.file = event[0].base64
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Imagen cargada',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Imagen muy grande',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
   }
 
 }
