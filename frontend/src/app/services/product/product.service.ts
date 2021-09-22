@@ -25,7 +25,6 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.URL_API}/api/getAllModels`) //Este alias Product[] es solo para los get 
   }
 
-  // Crear usuarios. La propiedad createUsers va para el useradmin.component.ts
   createProduct(product:Product){
     console.log(`${this.URL_API}/api/createModel`)
     return this.http.post(`${this.URL_API}/api/createModel`, product)

@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ProductadminComponent } from './components/productadmin/productadmin.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { CartComponent } from './components/cart/cart.component'
+import { CartComponent } from './components/cart/cart.component';
+import { UseradminComponent } from './components/useradmin/useradmin.component'
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CartComponent } from './components/cart/cart.component'
     HomeComponent,
     ProductadminComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    UseradminComponent
   ],
   imports: [
     BrowserModule,

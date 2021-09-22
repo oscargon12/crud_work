@@ -9,13 +9,14 @@ const cors = require('cors')
 
 const db = require("./database") //Requiriendo la base de datos desde database.js
 
-const MenuRoutes = require("./routes/menu.routes") //Requiriendo la ruta 
+const MenuRoutes = require("./routes/menu.routes") //Requiriendo la ruta de productos
+const RolRoutes = require("./routes/rol.routes")
 
 //== Modulos ==
 const app = express(); // Alias de express
 app.use(cors()) //use es una función de express
 
-const port = (process.env.PORT || 4000) // Puerto (Trabaje en otro oooo el 5000)
+const port = (process.env.PORT || 4000) // Puerto (Trabaje en otro oooo el 4000)
 
 // Middlewares - intermedarios
 app.use(morgan("dev"))

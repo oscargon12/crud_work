@@ -28,7 +28,8 @@ modelController.updateModel = async (req, res) => {
         if(updateModel) res.status(201).json ({message: "Producto actualizado", updateModel})
         else res.status(202).json({message: "El producto no existe"})
     } catch (error) {
-        
+        console.log(error);
+        res.status(400).json({message: "error al actualizar el producto", error})
     }
 }
 
@@ -55,6 +56,7 @@ modelController.getById = async (req, res) => {
         res.status(400).json({message: "Error", error})
     }
 }
+
 module.exports = modelController
 
 //Eliminar
@@ -67,3 +69,4 @@ modelController.deleteModel = async(req, res) => {
         res.status(400).json({messaege: "Error", error})
     }
 }
+
