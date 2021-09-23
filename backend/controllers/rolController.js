@@ -1,5 +1,4 @@
-const Rol = require('../models/Rol')
-
+const Rol = require("../models/Rol")
 const rolController = {}
 
 //Create
@@ -70,4 +69,3 @@ rolController.deleteRol = async(req, res) => {
         res.status(400).json({messaege: "Error", error})
     }
 }
-
